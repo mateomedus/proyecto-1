@@ -5,7 +5,7 @@ Repositorio de base para el Proyecto 1 - 2019 - Laravel
 ## Creación del Fork
 
 Debe realizar un fork de este repositorio en su propia cuenta de GitHub.
-Una vez realizado esto, puede clonar su fork, y seguir las siguientes instrucciones para poder correr localmente el proyecto inicial en Laravel (ver requisitos mínimos [acá](https://laravel.com/docs/5.8#server-requirements):
+Una vez realizado esto, puede clonar su fork, y seguir las siguientes instrucciones para poder correr localmente el proyecto inicial en Laravel (ver requisitos mínimos [acá](https://laravel.com/docs/5.8#server-requirements)):
 
 1. `git clone https://github.com/<UsuarioGitHub>/proyecto-1.git` clona localmente el fork del repositorio original, `<UsuarioGitHub>` **NO** debe ser `iaw-dcic`
 1. `cd proyecto-1`
