@@ -9,8 +9,8 @@ Una vez realizado esto, puede clonar su fork, y seguir las siguientes instruccio
 
 1. `git clone https://github.com/<UsuarioGitHub>/proyecto-1.git` clona localmente el fork del repositorio original, `<UsuarioGitHub>` **NO** debe ser `iaw-dcic`
 1. `cd proyecto-1`
-1. `composer update` instala dependencias
-1. `cp .env.example .env` crea el archivo de configuración de entorno
+1. `composer install` instala dependencias
+1. `cp .env.example .env` (`copy .env.example .env` en Windows) crea el archivo de configuración de entorno
 1. `php artisan key:generate` agrega un api key aleatorio
 1. `php artisan serve` inicializa el server
 
