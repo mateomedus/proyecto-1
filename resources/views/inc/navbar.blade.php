@@ -26,7 +26,6 @@
                   
                   <!-- Right Side Of Navbar -->
                   <ul class="navbar-nav ml-auto">
-                      <a class="nav-link" href="/posts/create">Create Post</a>
                       <!-- Authentication Links -->
                       @guest
                           <li class="nav-item">
@@ -44,6 +43,7 @@
                               </a>
 
                               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                  <a class="dropdown-item" href="/dashboard">Dashboard</a>
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                      onclick="event.preventDefault();
                                                    document.getElementById('logout-form').submit();">
