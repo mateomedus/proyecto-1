@@ -16,7 +16,9 @@ Route::get('/', 'PagesController@index');
 Route::get('/about', 'PagesController@about');
 
 Route::resource('posts','PostsController');
-Route::resource('profile','ProfileController');
+Route::get('/profile','ProfileController@index');
+Route::get('/edit','ProfileController@edit');
+Route::put('/update','ProfileController@update');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');

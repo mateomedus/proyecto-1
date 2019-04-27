@@ -8,6 +8,7 @@ class Profile extends Model
 {
     public $primaryKey = 'id';
     public $name = 'name';
+    public $email = 'email';
 
     public function user(){
         return $this->belongsTo('App\user');
