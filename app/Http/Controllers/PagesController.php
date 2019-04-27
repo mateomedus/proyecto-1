@@ -8,11 +8,11 @@ class PagesController extends Controller
 {
     
     public function index(){
-        //$title = 'Welcome to the main page';
-        return view('pages.index');// -> with('title', $title);
+        return view('pages.index');
     }
 
     public function about(){
         return view('pages.about');
     }
+
 }

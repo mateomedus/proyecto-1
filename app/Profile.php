@@ -1,0 +1,15 @@
+<?php
+
+namespace App;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Profile extends Model
+{
+    public $primaryKey = 'id';
+    public $name = 'name';
+
+    public function user(){
+        return $this->belongsTo('App\user');
+    }
+}
