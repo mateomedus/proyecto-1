@@ -22,3 +22,7 @@ Route::put('/update','ProfileController@update');
 Auth::routes();
 
 Route::get('/dashboard', 'DashboardController@index');
+
+// Facebook socialite
+Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
+Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
