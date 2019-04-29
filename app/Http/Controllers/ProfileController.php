@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Profile;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
     public function index(){
+        if(!Auth::check()){
+            return redirect('/')->with('error','Unauthorized Page');
+        }
+
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
@@ -16,6 +21,10 @@ class ProfileController extends Controller
     }
 
     public function edit(){
+        if(!Auth::check()){
+            return redirect('/')->with('error','Unauthorized Page');
+        }
+
         $user_id = auth()->user()->id;
         $user = User::find($user_id);
 
@@ -37,5 +46,10 @@ class ProfileController extends Controller
         $user->save();
 
         return redirect('/profile')->with('success', 'Profile Updated');
+    }
+
+    public function show($user_id){
+        $user = User::find($user_id);
+        return view('user.profile')->with('profile',$user);
     }
 }
