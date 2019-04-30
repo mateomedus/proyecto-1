@@ -67,13 +67,11 @@ class LoginController extends Controller
         else{
             $user = new User;
             $user->name = $userSocial->name;
-            $user->username = $userSocial->username;
+            $user->username = $userSocial->name;
             $user->email = $userSocial->email;
             $user->password = bcrypt('123123123');
             $user->save();
             Auth::login($user);
         }
-
-        
     }
 }
