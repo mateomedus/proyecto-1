@@ -47,7 +47,7 @@ return [
     'google' => [
         'client_id' => '645709888697-v7dbnhlpaesm02jb3t6njntdp6m01kgq.apps.googleusercontent.com',
         'client_secret' => '3pj-dQVkXLuMq1unNtQfOsZJ',
-        'redirect' => 'http://proyecto-1.test/login/facebook/callback',
+        'redirect' => 'http://http://iaw-post-it.herokuapp.com//login/facebook/callback',
     ],
 
 ];
