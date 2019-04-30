@@ -8,6 +8,10 @@
         {{Form::text('name', $profile->name, ['class' => 'form-control', 'placeholder' => 'Name'])}}
     </div>
     <div class="form-group">
+            {{Form::label('username', 'Username')}}
+            {{Form::text('username', $profile->username, ['class' => 'form-control', 'placeholder' => 'Username'])}}
+        </div>
+    <div class="form-group">
         {{Form::label('email', 'Email')}}
         {{Form::text('email', $profile->email, ['class' => 'form-control', 'placeholder' => 'Email'])}}
     </div>

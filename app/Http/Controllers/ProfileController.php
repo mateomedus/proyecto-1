@@ -38,10 +38,12 @@ class ProfileController extends Controller
 
         $this->validate($request,[
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required'
         ]);
 
         $user->name = $request->input('name');
+        $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->save();
 

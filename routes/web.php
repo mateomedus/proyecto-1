@@ -13,7 +13,7 @@
 
 Route::get('/', 'PagesController@index');
 
-Route::get('/about', 'PagesController@about');
+Route::get('/readme', 'PagesController@readme');
 
 Route::resource('posts','PostsController');
 Route::resource('/profile','ProfileController');
