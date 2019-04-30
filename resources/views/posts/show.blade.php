@@ -3,11 +3,11 @@
 @section('content')
     <h1>{{$post->title}}</h1>
     <hr>
-    <img style="width:100" src="/public/{{$post->cover_image}}">
+    <img style="width:100" src="/images/{{$post->cover_image}}">
     <br><br>
     <div>{!!$post->body!!}</div>
     <hr>
-    <small>Written on {{$post->created_at}} by <a href="/images/{{$post->user->id}}">{{$post->user->name}}</a></small>
+    <small>Written on {{$post->created_at}} by <a href="/profile/{{$post->user->id}}">{{$post->user->name}}</a></small>
     <hr>
     @if(!Auth::guest()) 
         @if(Auth::user()->id == $post->user_id)
