@@ -10,7 +10,7 @@
         <br>
         <div class="form-group row">
                 <div class="col-md-4 offset-md-4">
-                    <a href="login/facebook">Login with Facebook</a> 
+                    <a href="login/google">Login with Google</a> 
                 </div>
         </div>
     </div>

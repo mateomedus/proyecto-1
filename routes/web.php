@@ -24,5 +24,5 @@ Auth::routes();
 Route::get('/dashboard', 'DashboardController@index');
 
 // Facebook socialite
-Route::get('login/facebook', 'Auth\LoginController@redirectToProvider');
-Route::get('login/facebook/callback', 'Auth\LoginController@handleProviderCallback');
+Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');

@@ -41,23 +41,23 @@ class LoginController extends Controller
     }
 
     /**
-     * Redirect the user to the facebook authentication page.
+     * Redirect the user to the google authentication page.
      *
      * @return \Illuminate\Http\Response
      */
     public function redirectToProvider()
     {
-        return Socialite::driver('facebook')->redirect();
+        return Socialite::driver('google')->redirect();
     }
 
     /**
-     * Obtain the user information from facebook.
+     * Obtain the user information from google.
      *
      * @return \Illuminate\Http\Response
      */
     public function handleProviderCallback()
     {
-        $userSocial = Socialite::driver('facebook')->user();
+        $userSocial = Socialite::driver('google')->user();
 
         $findUser = User::where('email',$userSocial->email)->first();
 

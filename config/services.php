@@ -44,9 +44,9 @@ return [
         ],
     ],
 
-    'facebook' => [
-        'client_id' => '431838294217631',
-        'client_secret' => 'cebd3194ca62cbfeb30d1b065c66b33d',
+    'google' => [
+        'client_id' => '645709888697-v7dbnhlpaesm02jb3t6njntdp6m01kgq.apps.googleusercontent.com',
+        'client_secret' => '3pj-dQVkXLuMq1unNtQfOsZJ',
         'redirect' => 'http://proyecto-1.test/login/facebook/callback',
     ],
 
