@@ -69,7 +69,7 @@ class LoginController extends Controller
             // strip out all whitespace
             $uname_clean = preg_replace('/\s*/', '', $userSocial->name);
             // convert the string to all lowercase
-            $uname_clean = strtolower($zname_clean);
+            $uname_clean = strtolower($uname_clean);
             $user->username = $uname_clean;
             $user->email = $userSocial->email;
             $user->password = bcrypt('123123123');
