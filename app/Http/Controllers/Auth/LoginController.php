@@ -77,6 +77,6 @@ class LoginController extends Controller
             Auth::login($user);
         }
 
-        return view('dashboard');
+        return redirect('/dashboard');
     }
 }
