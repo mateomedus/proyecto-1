@@ -1,9 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <br>
     <h1>{{$post->title}}</h1>
-    <br>
+    <hr>
     <img style="width:100" src="/storage/cover_images/{{$post->cover_image}}">
     <br><br>
     <div>{!!$post->body!!}</div>

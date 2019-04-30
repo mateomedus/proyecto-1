@@ -2,7 +2,7 @@
 
 @section('content')
     <h1>Posts</h1>
-    <br>
+    <hr>
     @if(count($posts) > 0)
         @foreach($posts as $post)
             <div class="well">

@@ -2,6 +2,7 @@
 
 @section('content')
     <h1>Profile</h1>
+    <hr>
     <h3>Name: {{$profile->name}}<h3>
     <h3>Username: {{$profile->username}}<h3>
     <h3>Email: {{$profile->email}}<h3>
