@@ -68,7 +68,7 @@ class PostsController extends Controller
         
         }
         else{
-            $filenameToStore = 'noimage.jpg';
+            $filenameToStore = base_path().'/public/images/noimage.jpg';
         }
 
         // Create post
