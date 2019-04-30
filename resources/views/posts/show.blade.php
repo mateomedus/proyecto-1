@@ -7,7 +7,7 @@
     <br><br>
     <div>{!!$post->body!!}</div>
     <hr>
-    <small>Written on {{$post->created_at}} by <a href="/profile/{{$post->user->id}}">{{$post->user->name}}</a></small>
+    <small>Written on {{$post->created_at}} by <a href="/images/{{$post->user->id}}">{{$post->user->name}}</a></small>
     <hr>
     @if(!Auth::guest()) 
         @if(Auth::user()->id == $post->user_id)
