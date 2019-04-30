@@ -67,11 +67,17 @@ class LoginController extends Controller
         else{
             $user = new User;
             $user->name = $userSocial->name;
-            $user->username = $userSocial->name;
+            // strip out all whitespace
+            $uname_clean = preg_replace('/\s*/', '', $userSocial->name);
+            // convert the string to all lowercase
+            $uname_clean = strtolower($zname_clean);
+            $user->username = $uname_clean;
             $user->email = $userSocial->email;
             $user->password = bcrypt('123123123');
             $user->save();
             Auth::login($user);
         }
+
+        return view('dashboard');
     }
 }
