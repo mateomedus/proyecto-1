@@ -64,7 +64,8 @@ class PostsController extends Controller
             // Filename to store
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             // Upload the image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore);
+            $request->file('cover_image')->move(public_path().'.', $filenameToStore);
+        
         }
         else{
             $filenameToStore = 'noimage.jpg';
@@ -134,17 +135,16 @@ class PostsController extends Controller
             // Filename to store
             $filenameToStore = $filename.'_'.time().'.'.$extension;
             // Upload the image
-            $path = $request->file('cover_image')->storeAs('public/cover_images', $filenameToStore);
-        }
-        else{
-            $fileNameToStrore = 'noimage.jpg';
+            $path = $request->file('cover_image')->move('public', $filenameToStore);
         }
 
         // Create post
         $post = Post::find($id);
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->cover_image = $filenameToStore;
+        if($request->hasFile('cover_image')){
+            $post->cover_image = $filenameToStore;
+        }
         $post->save();
 
         return redirect('/posts')->with('success', 'Post Updated');
