@@ -52,8 +52,8 @@
                         </div>
 
                         <div class="form-group row">
-                                <div class="col-md-8 offset-md-4">
-                                    <a href="login/google">Login with Google</a> 
+                                <div class="col-md-8 offset-md-4" >
+                                   <a href="login/google">Login with Google</a> 
                                 </div>
                         </div>
                         
