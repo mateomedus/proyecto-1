@@ -70,8 +70,8 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        //$post->postList_id
-        $post->user_id = auth()->user()->id;
+        $post->postList_id = '1';
+        //$post->user_id = 'auth()->user()->id';
         $post->cover_image = $filenameToStore;
         $post->save();
         

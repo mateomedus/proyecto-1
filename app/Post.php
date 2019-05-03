@@ -3,14 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use App\PostList;
+use App\PostsList;
 
 class Post extends Model
 {
     protected $table = 'posts';
     public $primaryKey = 'id';
 
-    public function userList(){
-        return $this->belongsTo('App\PostList');
+    public function postsList(){
+        return $this->belongsTo('App\PostsList');
     }
 }

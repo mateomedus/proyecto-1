@@ -8,7 +8,7 @@
             <div class="well">
                 <div class="row bg-white rounded border border-info">
                     <div class="col-md-9 col-sm-9">
-                        <h3><a href="/lists/{{$list->id}}">{{$list->title}}</a></h3>
+                        <h3><a href="/postsList/{{$list->id}}">{{$list->title}}</a></h3>
                     </div>
                 </div>
                 <br>

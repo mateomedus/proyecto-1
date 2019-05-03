@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\postsList;
+use App\PostsList;
+use App\Post;
+use App\User;
 
 class ListsController extends Controller
 {
@@ -68,7 +70,10 @@ class ListsController extends Controller
      */
     public function show($id)
     {
-        //
+        $list = PostsList::find($id);
+        $posts = Post::where('postList_id','=',$id)->paginate(10);
+        $user = User::find($id);
+        return view('postsList.show')->with('posts',$posts)->with('list',$list)->with('user',$user);
     }
 
     /**
