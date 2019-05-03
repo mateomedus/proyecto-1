@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="/posts/create" class="btn btn-primary"> Create Post </a>
+                    <a href="/postsList/create" class="btn btn-primary"> Create List </a>
                     <br><br>
                     <h3>Your blog posts</h3>
                     @if(count($posts)>0)

@@ -16,6 +16,7 @@ Route::get('/', 'PagesController@index');
 Route::get('/readme', 'PagesController@readme');
 
 Route::resource('posts','PostsController');
+Route::resource('postsList','ListsController');
 Route::resource('/profile','ProfileController');
 Route::get('/edit','ProfileController@edit');
 Route::put('/update','ProfileController@update');
