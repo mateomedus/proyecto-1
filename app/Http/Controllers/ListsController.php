@@ -56,10 +56,10 @@ class ListsController extends Controller
         $list = new PostsList;
         $list->title = $request->input('title');
         $list->user_id = auth()->user()->id;
-        $list->visible = (bool) $request->input('visible');
+        $list->visible = (boolean) $request->visible;
         $list->save();
 
-        return redirect('/postsList')->with('success', 'List Created');
+        return redirect('/listDashboard')->with('success', 'List Created');
     }
 
     /**
@@ -72,7 +72,7 @@ class ListsController extends Controller
     {
         $list = PostsList::find($id);
         $posts = Post::where('postList_id','=',$id)->paginate(10);
-        $user = User::find($id);
+        $user = auth()->user();
         return view('postsList.show')->with('posts',$posts)->with('list',$list)->with('user',$user);
     }
 
@@ -84,7 +84,12 @@ class ListsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $list = PostsList::find($id);
+        //Check for correct user
+        if(auth()->user()->id != $list->user_id){
+            return redirect('/postsList')->with('error','Unauthorized Page');
+        }
+        return view('postsList.edit')->with('list',$list);
     }
 
     /**
@@ -96,7 +101,19 @@ class ListsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required',
+            'visible' => 'required'
+        ]);
+
+        // Create post
+        $list = PostsList::find($id);
+        $list->title = $request->input('title');
+        $list->visible = (bool) $request->input('visible');
+    
+        $list->save();
+
+        return redirect('/listDashboard')->with('success', 'List Updated');
     }
 
     /**
@@ -107,6 +124,17 @@ class ListsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $list = PostsList::find($id);
+        //check for correct user
+        if(auth()->user()->id != $list->user_id){
+            return redirect('/postsList')->with('error','Unauthorized Page');
+        }
+        $posts = Post::where('postList_id','=',$list->id);
+        foreach($posts as $post){
+            Storage::delete('public/cover_images/'.$post->cover_image);
+            $post->delete();
+        }
+        $list->delete();
+        return redirect('/listDashboard')->with('success', 'List Removed');
     }
 }

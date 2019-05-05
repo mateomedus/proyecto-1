@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\PostsList;
 
-class DashboardController extends Controller
+class ListDashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -25,8 +26,8 @@ class DashboardController extends Controller
     public function index()
     {
         $user_id = auth()->user()->id;
-        $user = User::find($user_id);
+        $lists = PostsList::where('user_id','=',$user_id)->paginate(10);
 
-        return view('dashboard')->with('posts', $user->posts);
+        return view('listDashboard')->with('lists', $lists);
     }
 }

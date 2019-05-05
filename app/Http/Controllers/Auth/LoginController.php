@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/listDashboard';
 
     /**
      * Create a new controller instance.
@@ -77,6 +77,6 @@ class LoginController extends Controller
             Auth::login($user);
         }
 
-        return redirect('/dashboard');
+        return redirect('/listDashboard');
     }
 }

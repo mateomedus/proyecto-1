@@ -34,9 +34,9 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('posts.create');
+        return view('posts.create')->with('list_id',$id);
     }
 
     /**
@@ -45,7 +45,7 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$list_id)
     {
         $this->validate($request, [
             'title' => 'required',
@@ -70,12 +70,11 @@ class PostsController extends Controller
         $post = new Post;
         $post->title = $request->input('title');
         $post->body = $request->input('body');
-        $post->postList_id = '1';
-        //$post->user_id = 'auth()->user()->id';
+        $post->postList_id = $list_id;
         $post->cover_image = $filenameToStore;
         $post->save();
         
-        return redirect('/posts')->with('success', 'Post Created');
+        return redirect('/postDashboard/'.$post->postList_id)->with('success', 'Post Created');
     }
 
     /**
@@ -100,8 +99,8 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         //Check for correct user
-        if(auth()->user()->id != $post->user_id){
-            return redirect('/posts')->with('error','Unauthorized Page');
+        if(auth()->user()->id != $post->postList_id){
+            return redirect('/postsList')->with('error','Unauthorized Page');
         }
         return view('posts.edit')->with('post',$post);
     }
@@ -143,7 +142,8 @@ class PostsController extends Controller
         }
         $post->save();
 
-        return redirect('/posts')->with('success', 'Post Updated');
+        $postList_id = auth()->user()->id;
+        return redirect('/postDashboard/'.$postList_id)->with('success', 'Post Updated');
     }
 
     /**
@@ -156,14 +156,11 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
         //check for correct user
-        if(auth()->user()->id != $post->user_id){
-            return redirect('/posts')->with('error','Unauthorized Page');
-        }
-        if($post->cover_image != 'noimage.jpg'){
-            // Delete the image
-            Storage::delete('public/cover_images/'.$post->cover_image);
-        }
+        //if(auth()->user()->id != $post->postList_id){
+        //     return redirect('/posts')->with('error','Unauthorized Page');
+        //}
+        Storage::delete('public/cover_images/'.$post->cover_image);
         $post->delete();
-        return redirect('/posts')->with('success', 'Post Removed');
+        return redirect('/postDashboard/'.$post->postList_id)->with('success', 'Post Removed');
     }
 }

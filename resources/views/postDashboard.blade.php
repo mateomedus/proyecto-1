@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Dashboard</div>
+                <div class="card-header">Post Dashboard</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -13,7 +13,7 @@
                             {{ session('status') }}
                         </div>
                     @endif
-                    <a href="/postsList/create" class="btn btn-primary"> Create List </a>
+                    <a href="/posts/create/{{$list_id}}" class="btn btn-primary"> Create Post </a>
                     <br><br>
                     <h3>Your blog posts</h3>
                     @if(count($posts)>0)
