@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\PostsList;
 use App\Post;
 use App\User;
@@ -129,10 +130,11 @@ class ListsController extends Controller
         if(auth()->user()->id != $list->user_id){
             return redirect('/postsList')->with('error','Unauthorized Page');
         }
-        $posts = Post::where('postList_id','=',$list->id);
+        $posts = Post::where('postList_id','=',$list->id)->paginate(10);
         foreach($posts as $post){
             Storage::delete('public/cover_images/'.$post->cover_image);
             $post->delete();
+            
         }
         $list->delete();
         return redirect('/listDashboard')->with('success', 'List Removed');
