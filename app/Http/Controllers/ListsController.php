@@ -51,7 +51,6 @@ class ListsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'visible' => 'required',
         ]);
 
         $list = new PostsList;
@@ -104,7 +103,6 @@ class ListsController extends Controller
     {
         $this->validate($request, [
             'title' => 'required',
-            'visible' => 'required'
         ]);
 
         // Create post

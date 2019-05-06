@@ -9,7 +9,7 @@
         </div>
         <div class="form-group">
                 {{Form::label('visible', 'Visible')}}
-                {{Form::select('visible', array('false' => 'Privada', 'true' => 'Publica'), $list->visible, ['class' => 'form-control'])}}
+                {{Form::checkbox('visible', 'visible', $list->visible)}}
         </div>
         {{Form::hidden('_method','PUT')}}
         {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
