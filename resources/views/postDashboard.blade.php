@@ -15,7 +15,7 @@
                     @endif
                     <a href="/posts/create/{{$list_id}}" class="btn btn-primary"> Create Post </a>
                     <br><br>
-                    <h3>Your blog posts</h3>
+                    <h3>Your blog posts from list {{$list->title}}</h3>
                     @if(count($posts)>0)
                         <table class="table table-striped">
                             <tr>

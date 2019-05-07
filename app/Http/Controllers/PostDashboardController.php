@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\PostsList;
 
 class PostDashboardController extends Controller
 {
@@ -25,7 +26,8 @@ class PostDashboardController extends Controller
     public function show($id)
     {
         $posts = Post::where('postList_id','=',$id)->paginate(10);
+        $list = PostsList::find($id);
 
-        return view('postDashboard')->with('posts', $posts)->with('list_id',$id);
+        return view('postDashboard')->with('posts', $posts)->with('list_id',$id)->with('list',$list);
     }
 }
