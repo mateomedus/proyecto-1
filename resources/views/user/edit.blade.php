@@ -11,10 +11,22 @@
             {{Form::label('username', 'Username')}}
             {{Form::text('username', $profile->username, ['class' => 'form-control', 'placeholder' => 'Username'])}}
         </div>
-    <div class="form-group">
-        {{Form::label('email', 'Email')}}
-        {{Form::text('email', $profile->email, ['class' => 'form-control', 'placeholder' => 'Email'])}}
-    </div>
+        <div>
+            {{ Form::label('password', 'Password', ['class' => $errors->has('password') ? 'error' : ''])}}
+            {{ Form::password('password', ['class' => 'form-control',$errors->has('password') ? 'error' : '']) }}
+            @if ($errors->has('password'))
+                <small class="error">{{ $errors->first('password') }}</small>
+            @endif
+        </div>
+        <br>
+        <div>
+            {{ Form::label('password_confirmation', 'Confirm password', ['class' => $errors->has('password_confirmation') ? 'error' : '']) }}
+            {{ Form::password('password_confirmation', ['class' => 'form-control',$errors->has('password_confirmation') ? 'error' : '']) }}
+            @if ($errors->has('password_confirmation'))
+                <small class="error">{{ $errors->first('password_confirmation') }}</small>
+            @endif
+        </div>
+        <br>
     {{Form::hidden('_method','PUT')}}
     {{Form::submit('Submit', ['class' => 'btn btn-primary'])}}
 {{Form::close()}}

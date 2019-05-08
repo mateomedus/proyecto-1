@@ -9,7 +9,7 @@ class Profile extends Model
     public $primaryKey = 'id';
     public $name = 'name';
     public $username = 'username';
-    public $email = 'email';
+    public $password = 'password';
 
     public function user(){
         return $this->belongsTo('App\User');

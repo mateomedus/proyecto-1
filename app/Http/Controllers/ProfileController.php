@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Profile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -37,14 +38,14 @@ class ProfileController extends Controller
         $user = User::find($user_id);
 
         $this->validate($request,[
-            'name' => 'required',
-            'username' => 'required',
-            'email' => 'required'
+            'name' => ['required', 'string', 'max:255'],
+            'username' => ['required', 'string', 'max:255',],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
 
         $user->name = $request->input('name');
         $user->username = $request->input('username');
-        $user->email = $request->input('email');
+        $user->password = Hash::make($request->input('password'));
         $user->save();
 
         return redirect('/profile')->with('success', 'Profile Updated');
