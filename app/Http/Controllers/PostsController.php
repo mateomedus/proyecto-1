@@ -140,6 +140,7 @@ class PostsController extends Controller
 
         // Create post
         $post = Post::find($id);
+        $list = PostsList::where('id','=',$post->postList_id)->first();
         $post->title = $request->input('title');
         $post->body = $request->input('body');
         if($request->hasFile('cover_image')){
@@ -148,7 +149,7 @@ class PostsController extends Controller
         $post->save();
 
         $postList_id = auth()->user()->id;
-        return redirect('/postDashboard/'.$postList_id)->with('success', 'Post Updated');
+        return redirect('/postDashboard/'.$list->id)->with('success', 'Post Updated')->with('list',$list);
     }
 
     /**
