@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Post;
+use App\PostsList;
+use App\User;
 
 class PostsController extends Controller
 {
@@ -86,7 +88,9 @@ class PostsController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
-        return view('posts.show')->with('post',$post);
+        $list = PostsList::where('id','=',$post->postList_id)->first();
+        $user = User::where('id','=',$list->user_id)->first();
+        return view('posts.show')->with('post',$post)->with('list',$list)->with('user',$user);
     }
 
     /**
@@ -98,8 +102,9 @@ class PostsController extends Controller
     public function edit($id)
     {
         $post = Post::find($id);
+        $list = PostsList::where('id','=',$post->postList_id)->first();
         //Check for correct user
-        if(auth()->user()->id != $post->postList_id){
+        if(auth()->user()->id != $list->user_id){
             return redirect('/postsList')->with('error','Unauthorized Page');
         }
         return view('posts.edit')->with('post',$post);
@@ -155,12 +160,19 @@ class PostsController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        $list = PostsList::where('id','=',$post->postList_id)->first();
         //check for correct user
-        //if(auth()->user()->id != $post->postList_id){
-        //     return redirect('/posts')->with('error','Unauthorized Page');
-        //}
+        if(auth()->user()->id != $list->user_id){
+            return redirect('/posts')->with('error','Unauthorized Page');
+        }
         Storage::delete('public/cover_images/'.$post->cover_image);
         $post->delete();
         return redirect('/postDashboard/'.$post->postList_id)->with('success', 'Post Removed');
+    }
+
+    public function delete($id)
+    {
+        $post = Post::find($id);
+        return view('posts.delete')->with('post',$post);
     }
 }

@@ -34,12 +34,7 @@
                                         @endif
                                     </td>
                                     <td><a href="/postsList/{{$list->id}}/edit" class="btn btn-default"> Edit</a></td>
-                                    <td>
-                                        {!!Form::open(['action' => ['ListsController@destroy', $list->id], 'method' => 'POST', 'class' => 'float-right'])!!}
-                                            {{Form::hidden('_method', 'DELETE')}}
-                                            {{Form::submit('Delete', ['class' => 'btn btn-danger'])}}
-                                        {!!Form::close()!!}
-                                    </td>
+                                    <td><a href="/postsList/{{$list->id}}/delete" class="btn btn-danger"> Delete</a></td>
                                 </tr>
                             @endforeach
                         </table>

@@ -7,7 +7,7 @@
     <br><br>
     <div>{!!$post->body!!}</div>
     <hr>
-    <small>Written on {{$post->created_at}} by <a href="/profile/{{$post->user->id}}">{{$post->user->name}}</a></small>
+    <small>Written on {{$post->created_at}} by <a href="/profile/{{$user->id}}">{{$user->name}}</a></small>
     <hr>
     @if(!Auth::guest()) 
         @if(Auth::user()->id == $post->user_id)
@@ -19,5 +19,5 @@
         @endif
     @endif
     <br><br>
-    <a href="/posts" class="btn btn-primary">Go back</a>
+<a href="/postsList/{{$post->postList_id}}" class="btn btn-primary">Go back</a>
 @endsection

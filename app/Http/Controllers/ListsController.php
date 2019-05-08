@@ -72,7 +72,7 @@ class ListsController extends Controller
     {
         $list = PostsList::find($id);
         $posts = Post::where('postList_id','=',$id)->paginate(10);
-        $user = auth()->user();
+        $user = User::where('id','=',$list->user_id)->first();
         return view('postsList.show')->with('posts',$posts)->with('list',$list)->with('user',$user);
     }
 
@@ -136,5 +136,11 @@ class ListsController extends Controller
         }
         $list->delete();
         return redirect('/listDashboard')->with('success', 'List Removed');
+    }
+
+    public function delete($id)
+    {
+        $list = PostsList::find($id);
+        return view('postsList.delete')->with('list',$list);
     }
 }
